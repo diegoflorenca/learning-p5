@@ -6,23 +6,26 @@ function setup() {
 function draw() {
   background(155);
   stroke(0);
-  line(0, 0, 499, 499);
-  line(0, 499, 499, 0);
+  line(0, 0, mouseX, mouseY);
+  line(0, 499, mouseX, mouseY);
+  line(499, 0, mouseX, mouseY);
+  line(499, 499, mouseX, mouseY);
+
+  rectMode(CENTER);
   noStroke();
   fill(0);
-  rect(250, 250, 10, 10);
+  rect(mouseX, mouseY, 10, 10);
 
   noFill();
-  rectMode(CENTER);
   stroke(255);
 
-  x = x + 1;
-  if (x == 500) {
+  x = x + 12;
+  if (x >= 500) {
     x = 0;
   }
   noFill();
   stroke(0);
-  rect(250, 250, x, x);
-  rect(250, 250, x + 50, x + 50);
-  rect(250, 250, x + 150, x + 150);
+  rect(mouseX, mouseY, x, x);
+  rect(mouseX, mouseY, x + 60, x + 60);
+  rect(mouseX, mouseY, x + 150, x + 150);
 }
