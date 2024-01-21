@@ -4,12 +4,16 @@ function setup() {
 }
 
 function draw() {
-  background(155);
+  background(mouseX, mouseY, (mouseX + mouseY) / 2);
   stroke(0);
   line(0, 0, mouseX, mouseY);
   line(0, 499, mouseX, mouseY);
-  line(499, 0, mouseX, mouseY);
+  line(250, 0, mouseX, mouseY);
+  line(0, 250, mouseX, mouseY);
+  line(499, 250, mouseX, mouseY);
+  line(250, 499, mouseX, mouseY);
   line(499, 499, mouseX, mouseY);
+  line(499, 0, mouseX, mouseY);
 
   rectMode(CENTER);
   noStroke();
@@ -28,4 +32,5 @@ function draw() {
   rect(mouseX, mouseY, x, x);
   rect(mouseX, mouseY, x + 60, x + 60);
   rect(mouseX, mouseY, x + 150, x + 150);
+  circle(mouseX, mouseY, x);
 }
