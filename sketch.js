@@ -5,6 +5,8 @@ function setup() {
   x = 0;
   centerX = width / 2;
   centerY = height / 2;
+  aspectRatio = windowWidth / windowHeight;
+  print(aspectRatio);
 }
 
 function draw() {
@@ -15,8 +17,8 @@ function draw() {
   fill(...squareColor);
 
   x = x + 6;
-
-  rect(centerX, centerY, x, x);
+  // how to use a shape with the same aspect ratio of the screen?
+  rect(centerX, centerY, x, x / aspectRatio);
 
   stroke(bgColor);
   line(0, 0, centerX, centerY);
@@ -27,7 +29,8 @@ function draw() {
   fill(bgColor);
   rect(centerX, centerY, 10, 10);
 
-  let windowSize = windowWidth > windowHeight ? windowWidth : windowHeight;
+  let windowSize =
+    windowWidth > windowHeight ? windowWidth : windowHeight * aspectRatio;
 
   if (x >= windowSize) {
     x = 0;
