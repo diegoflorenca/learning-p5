@@ -1,36 +1,37 @@
+let bgColor = [150, 23, 90];
+let squareColor = [50, 56, 134];
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(windowWidth, windowHeight);
   x = 0;
+  centerX = width / 2;
+  centerY = height / 2;
 }
 
 function draw() {
-  background(mouseX, mouseY, (mouseX + mouseY) / 2);
-  stroke(0);
-  line(0, 0, mouseX, mouseY);
-  line(0, 499, mouseX, mouseY);
-  line(250, 0, mouseX, mouseY);
-  line(0, 250, mouseX, mouseY);
-  line(499, 250, mouseX, mouseY);
-  line(250, 499, mouseX, mouseY);
-  line(499, 499, mouseX, mouseY);
-  line(499, 0, mouseX, mouseY);
+  background(...bgColor, 90);
 
   rectMode(CENTER);
   noStroke();
-  fill(0);
-  rect(mouseX, mouseY, 10, 10);
+  fill(...squareColor);
 
-  noFill();
-  stroke(255);
+  x = x + 6;
 
-  x = x + 12;
-  if (x >= 500) {
+  rect(centerX, centerY, x, x);
+
+  stroke(bgColor);
+  line(0, 0, centerX, centerY);
+  line(0, height, centerX, centerY);
+  line(width, height, centerX, centerY);
+  line(width, 0, centerX, centerY);
+
+  fill(bgColor);
+  rect(centerX, centerY, 10, 10);
+
+  let windowSize = windowWidth > windowHeight ? windowWidth : windowHeight;
+
+  if (x >= windowSize) {
     x = 0;
+    bgColor = squareColor;
+    squareColor = [random(255), random(255), random(255)];
   }
-  noFill();
-  stroke(0);
-  rect(mouseX, mouseY, x, x);
-  rect(mouseX, mouseY, x + 60, x + 60);
-  rect(mouseX, mouseY, x + 150, x + 150);
-  circle(mouseX, mouseY, x);
 }
